@@ -1,7 +1,7 @@
 import asyncio
 import datetime
 import random
-import evaluate
+import runner
 
 from dotenv import load_dotenv
 
@@ -9,7 +9,7 @@ load_dotenv()
 
 DATASET_NAME = "langsmith-rest-experiments"
 
-fixture_results = [
+experiment_results = [
     {
         "inputs": {"messages": [{"role": "user", "content": "Hello, how are you?"}]},
         # May be omitted if you don't have a reference output
@@ -81,4 +81,4 @@ fixture_results = [
 ]
 
 if __name__ == "__main__":
-    asyncio.run(evaluate.create_experiment(DATASET_NAME, fixture_results))
+    asyncio.run(runner.run_langsmith_experiment(DATASET_NAME, experiment_results))

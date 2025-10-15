@@ -1,5 +1,5 @@
 [project]
-name = "langsmith-api-evals"
+name = "langsmith-rest-experiments"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
