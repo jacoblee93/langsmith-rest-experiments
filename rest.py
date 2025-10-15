@@ -4,6 +4,10 @@ import datetime
 import json
 import uuid
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 LANGSMITH_API_URL = "https://api.smith.langchain.com"
 
 HEADERS = {

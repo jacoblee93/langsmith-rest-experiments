@@ -3,22 +3,21 @@ import datetime
 import random
 import runner
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 DATASET_NAME = "langsmith-rest-experiments"
 
 experiment_results = [
     {
-        "inputs": {"messages": [{"role": "user", "content": "Hello, how are you?"}]},
+        "inputs": {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "How many 'r's are in the word 'strawberry'?",
+                }
+            ]
+        },
         # May be omitted if you don't have a reference output
-        "reference_outputs": {
-            "messages": [{"role": "assistant", "content": "I'm doing well, thank you!"}]
-        },
-        "outputs": {
-            "messages": [{"role": "assistant", "content": "I'm doing well, thank you!"}]
-        },
+        "reference_outputs": {"messages": [{"role": "assistant", "content": "3"}]},
+        "outputs": {"messages": [{"role": "assistant", "content": "3"}]},
         "metadata": {
             "ls_provider": "openai",
             "ls_model_name": "gpt-5-nano",

@@ -4,6 +4,8 @@ This repo shows how to record experiments for your LLM apps using LangSmith's RE
 
 It is implemented in Python, but the actual language-specific components are quite lightweight - only a `for` loop in [`runner.py`](/runner.py) and a few methods in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
 
+![](/static/img/rest-experiment.gif)
+
 For simplicity, this base setup does not include leaving feedback on individual runs in your experiment, but we cover how to set up LLM-as-judge evaluators that automatically run in LangSmith over each experiment result [in this section of this README](#setting-up-llm-as-judge-evaluators-in-langsmith).
 
 ## Setup
@@ -35,7 +37,25 @@ Follow the link logged to the console to see the results in the LangSmith UI!
 
 While you can run your evaluators over your experiment locally, you can also configure LangSmith to automatically run LLM-as-judge evaluators over each run.
 
-<!-- To do so, navigate back to your dataset, and  -->
+To do so, navigate back to your dataset in LangSmith, then switch to the `Evaluators` pane:
+
+![](/static/img/create-evaluator.png)
+
+Press the `+ Evaluator` button and select `Create from Scratch`:
+
+![](/static/img/create-from-scratch.png)
+
+The default evaluator measures `correctness`, but you can tweak the prompt, model and feedback criteria as desired. You can also map different parts of your experiment run's inputs and outputs into the prompt.
+
+When you're ready, give it a name, then press `Create` in the top right corner of the pane.
+
+![](/static/img/save-changes.png)
+
+Now, the next time you run an experiment over this dataset, this evaluator will run and leave feedback!
+
+![](/static/img/experiment-with-feedback.png)
+
+LangSmith runs these jobs in a queue, so feedback may be delayed a few minutes.
 
 ### Using your own data
 
