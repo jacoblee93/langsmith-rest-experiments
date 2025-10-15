@@ -1,4 +1,4 @@
-# LangSmith REST API experiments
+# 📊 LangSmith REST API Experiments
 
 This repo shows how to record experiments for your LLM apps using LangSmith's REST API directly. It is agnostic of your eval runner, and only requires raw inputs and outputs.
 
