@@ -2,7 +2,7 @@
 
 This repo shows how to record experiments for your LLM apps using LangSmith's REST API directly. It is agnostic of your eval runner, and only requires raw inputs and outputs.
 
-It is implemented in Python, but the actual language-specific components are quite lightweight - only a `for` loop in [`runner.py`](/runner.py) and a few methods in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
+It is implemented in Python, but the actual language-specific components are quite lightweight - only a `for` loop in [`runner.py`](/runner.py) and a few HTTP calls in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
 
 ![](/static/img/rest-experiment.gif)
 
