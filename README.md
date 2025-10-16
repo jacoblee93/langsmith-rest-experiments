@@ -4,6 +4,8 @@ This repo shows how to record experiments using LangSmith's REST API directly.
 
 It does not require any special test harness or setup - you can run your LLM app however you'd like, then just send the inputs and outputs for each run. This allows you to use [LangSmith](https://docs.langchain.com/langsmith/home) as a system of record to track experiments over time, as well as use features like [annotation queues](https://docs.langchain.com/langsmith/annotation-queues) to help align your app with human preferences and automatically triggered [LLM-as-judge evaluators](https://docs.langchain.com/langsmith/llm-as-judge) to autonomously score performance.
 
+[![](/static/img/tweet.png)](https://x.com/mitsuhiko/status/1978207600706519370)
+
 ![](/static/img/rest-experiment.gif)
 
 It is implemented in Python, but the actual language-specific components are lightweight - only a `for` loop in [`recorder.py`](/recorder.py) and a few HTTP calls in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
