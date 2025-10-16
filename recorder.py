@@ -8,7 +8,7 @@ from rest import (
 )
 
 
-async def run_langsmith_experiment(dataset_name: str, fixture_results: list):
+async def record_langsmith_experiment(dataset_name: str, fixture_results: list):
     print(f"Creating experiment with {len(fixture_results)} runs...")
     print()
     async with aiohttp.ClientSession() as session:

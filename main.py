@@ -1,7 +1,8 @@
 import asyncio
 import datetime
 import random
-import runner
+
+from recorder import record_langsmith_experiment
 
 DATASET_NAME = "langsmith-rest-experiments"
 
@@ -80,4 +81,4 @@ experiment_results = [
 ]
 
 if __name__ == "__main__":
-    asyncio.run(runner.run_langsmith_experiment(DATASET_NAME, experiment_results))
+    asyncio.run(record_langsmith_experiment(DATASET_NAME, experiment_results))

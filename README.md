@@ -1,12 +1,10 @@
 # 📊 LangSmith REST API Experiments
 
-This repo shows how to record experiments for your LLM apps using LangSmith's REST API directly. It is agnostic of your eval runner, and only requires raw inputs and outputs.
-
-It is implemented in Python, but the actual language-specific components are quite lightweight - only a `for` loop in [`runner.py`](/runner.py) and a few HTTP calls in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
+This repo shows how to record experiments for your LLM apps using LangSmith's REST API directly. It does not require any special test harness or setup - you can run your app however you'd like, then just send raw inputs and outputs. This allows you to use LangSmith as a system of record to track experiments over time, and lets you use features like [annotation queues](https://docs.langchain.com/langsmith/annotation-queues) to help align your app with human preferences and automatically triggered [LLM-as-judge evaluators](https://docs.langchain.com/langsmith/llm-as-judge) to autonomously record scores on your runs.
 
 ![](/static/img/rest-experiment.gif)
 
-For simplicity, this base setup does not include leaving feedback on individual runs in your experiment, but we cover how to set up LLM-as-judge evaluators that automatically run in LangSmith over each experiment result [in this section of this README](#setting-up-llm-as-judge-evaluators-in-langsmith).
+It is implemented in Python, but the actual language-specific components are lightweight - only a `for` loop in [`recorder.py`](/recorder.py) and a few HTTP calls in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
 
 ## Setup
 
@@ -16,7 +14,7 @@ For simplicity, this base setup does not include leaving feedback on individual 
 uv sync
 ```
 
-2. Copy the `.env.example` file to a new file named `.env` with your LangSmith API key:
+2. Copy the `.env.example` file to a new file named `.env` with your LangSmith API key. If you don't have one already, you can [sign up here](https://smith.langchain.com/).
 ```bash
 LANGSMITH_API_KEY=your_api_key_here
 ```
@@ -33,7 +31,13 @@ This will create a dataset named `langsmith-rest-experiments` (if it doesn't exi
 
 Follow the link logged to the console to see the results in the LangSmith UI!
 
-### Setting up LLM-as-judge evaluators in LangSmith
+### LLM-as-judge evaluators
+
+For simplicity and portability, this repo does not run evaluators in code. Instead, we'll cover how to set up LLM-as-judge evaluators that automatically run in LangSmith as your experiment runs finish.
+
+:::note
+If you would like to run evaluators in code and are able to use LangSmith's SDKs, you can check out [this guide](https://docs.langchain.com/langsmith/evaluation-quickstart). Otherwise, you can [check out this guide](https://docs.langchain.com/langsmith/run-evals-api-only) for examples of how to create feedback via [LangSmith's REST API](https://api.smith.langchain.com/redoc?#tag/feedback/operation/create_feedback_api_v1_feedback_post).
+:::
 
 While you can run your evaluators over your experiment locally, you can also configure LangSmith to automatically run LLM-as-judge evaluators over each run.
 
@@ -84,12 +88,12 @@ experiment_results = [
 ]
 ```
 
-To run the method over real experiment results, you can import and call the `run_langsmith_experiment` method in `runner.py`, passing in your own inputs, expected reference outputs (if known), and actual outputs as appropriate.
+To run the method over real experiment results, you can import and call the `record_langsmith_experiment` method in `recorder.py`, passing in your own inputs, expected reference outputs (if known), and actual outputs as appropriate.
 
 ## Project Structure
 
 - `main.py` - Entry point with fixture data
-- `runner.py` - Experiment orchestration logic
+- `recorder.py` - Experiment orchestration logic
 - `rest.py` - LangSmith REST API client functions
 - `.env` - Environment variables (not committed)
 
