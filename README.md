@@ -1,6 +1,8 @@
 # 📊 LangSmith REST API Experiments
 
-This repo shows how to record experiments for your LLM apps using LangSmith's REST API directly. It does not require any special test harness or setup - you can run your app however you'd like, then just send raw inputs and outputs. This allows you to use LangSmith as a system of record to track experiments over time, and lets you use features like [annotation queues](https://docs.langchain.com/langsmith/annotation-queues) to help align your app with human preferences and automatically triggered [LLM-as-judge evaluators](https://docs.langchain.com/langsmith/llm-as-judge) to autonomously record scores on your runs.
+This repo shows how to record experiments using LangSmith's REST API directly.
+
+It does not require any special test harness or setup - you can run your LLM app however you'd like, then just send the inputs and outputs for each run. This allows you to use LangSmith as a system of record to track experiments over time, as well as use features like [annotation queues](https://docs.langchain.com/langsmith/annotation-queues) to help align your app with human preferences and automatically triggered [LLM-as-judge evaluators](https://docs.langchain.com/langsmith/llm-as-judge) to autonomously score performance.
 
 ![](/static/img/rest-experiment.gif)
 
