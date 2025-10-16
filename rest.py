@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-LANGSMITH_API_URL = "https://api.smith.langchain.com"
+LANGSMITH_API_URL = os.getenv("LANGSMITH_ENDPOINT", "https://api.smith.langchain.com")
 
 HEADERS = {
     "x-api-key": os.getenv("LANGSMITH_API_KEY"),
