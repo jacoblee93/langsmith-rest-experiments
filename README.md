@@ -103,6 +103,8 @@ To run the method over real experiment results, you can import and call the `rec
 
 ## How It Works
 
+This minimal runner takes the following steps to record experiments:
+
 1. Creates or retrieves a dataset by name
 2. Generates deterministic example IDs using UUID5
 3. Creates or updates examples in the dataset
