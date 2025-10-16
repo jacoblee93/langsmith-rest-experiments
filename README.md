@@ -11,7 +11,7 @@ It does not require any special test harness or setup - you can run your LLM app
 It is implemented in Python, but the actual language-specific components are lightweight - only a `for` loop in [`recorder.py`](/recorder.py) and a few HTTP calls in [`rest.py`](/rest.py). This minimizes the amount of surface area needed when porting to other languages.
 
 > [!NOTE] 
-> This guide is intended as an example for those who are unable or otherwise do not wish to use LangSmith's SDKs (e.g. if your app is not written in Python or TypeScript). We suggest using LangSmith's SDKs when possible - see our [documentation on evals](https://docs.langchain.com/langsmith/evaluation) to get started.
+> If your app is written in Python or TypeScript and you do not already have a evals harness, we suggest using LangSmith's SDKs for the best possible experience. See our [main documentation on evals](https://docs.langchain.com/langsmith/evaluation) to get started.
 
 ## Setup
 
@@ -43,7 +43,7 @@ Follow the link logged to the console to see the results in the LangSmith UI!
 For simplicity and portability, this repo does not run evaluators in code. Instead, we'll cover how to set up LLM-as-judge evaluators that automatically run in LangSmith as your experiment runs finish.
 
 > [!NOTE] 
-> If you would like to run evaluators in code and are able to use LangSmith's SDKs, you can [check out this guide](https://docs.langchain.com/langsmith/run-evals-api-only) for examples of how to create feedback via [LangSmith's REST API](https://api.smith.langchain.com/redoc?#tag/feedback/operation/create_feedback_api_v1_feedback_post).
+> If you would like to run evaluators in code, you can [check out this guide](https://docs.langchain.com/langsmith/run-evals-api-only) for examples of how to create feedback via [LangSmith's REST API](https://api.smith.langchain.com/redoc?#tag/feedback/operation/create_feedback_api_v1_feedback_post).
 
 While you can run your evaluators over your experiment locally, you can also configure LangSmith to automatically run LLM-as-judge evaluators over each run.
 
