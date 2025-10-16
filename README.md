@@ -16,7 +16,7 @@ For simplicity, this base setup does not include leaving feedback on individual 
 uv sync
 ```
 
-2. Create a `.env` file with your LangSmith API key:
+2. Copy the `.env.example` file to a new file named `.env` with your LangSmith API key:
 ```bash
 LANGSMITH_API_KEY=your_api_key_here
 ```
